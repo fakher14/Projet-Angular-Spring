@@ -1,0 +1,62 @@
+<table class="table user-list">
+    <thead>
+        <tr>
+            <th><span>IdInvoice</span></th>
+            <th><span>DiscountAmount</span></th>
+            <th><span>BillAmount</span></th>
+            <th><span>DateBill</span></th>
+            <th><span>Status</span></th>
+        </tr>
+    </thead>
+    <tbody>
+
+            <tr *ngFor = "let u of invoices; let i = index;">
+                <td>
+                    {{ u.idFacture }}
+                </td>
+                <td>
+                    {{ u.montantFacture }}
+                </td>
+                <td>
+                    {{ u.montantRemise }}
+                </td>
+
+                <td>
+                    {{ u.dateFacture }}
+                </td>
+                <td>
+                    {{ u.active }}
+                </td>
+                <td>
+                    <button class="btn btn-warning"  >Modifier</button>
+                </td>
+                <td>
+                    <button class="btn btn-danger" >Supprimer</button>
+
+                </td>
+
+            </tr>
+    </tbody>
+</table>
+
+<button class="btn btn-success" >Ajouter</button>
+
+<app-add-invoice  *ngIf="showAdd" ></app-add-invoice>
+
+<app-edit-invoice [invoiceToEdit]="invoiceToEdit1" *ngIf="show"  ></app-edit-invoice>
+
+(click)="editInvoice(u)"
+(click)="deleteInvoice(i)"
+(click)="showForm()"
+(aded)="addInv($event)"
+(edited)="editMyInvoice($event)"
+
+       <!-- <ul *ngFor = "let u of invoices; let i = index;">
+            <li>{{ u.idInvoice }}</li>
+            <li>{{ u.discountAmount }}</li>
+            <li>{{ u.billAmount }}</li>
+            <li>{{ u.dateBill }}</li>
+            <li>{{ u.Status }}</li>
+            <button (click)="deleteInvoice(i)">Supprimer</button>
+            <button (click)="editInvoice(u)">Update</button>
+        </ul> -->
